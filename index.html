@@ -11,14 +11,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Demo appInfo</h1>
+                    <h1>jquery-appInfo</h1>
+                    <hr>
+                    <h2>Demo</h2>
                     <div class=" btn-appinfo">
-                        <button class="btn btn-primary" data-msg="mon message" data-msg-timer="0">nouveau message</button>
+                        <button class="btn btn-primary" data-msg="mon message" >nouveau message</button>
                         <button class="btn btn-primary" data-msg="mon message qui ne s'affiche qu'une seconde" data-msg-timer="1000">nouveau message de 1sec</button>
-                   
                         <button class="btn btn-success" data-msg-type="success" data-msg="mon message success" data-msg-timer="2000">message success de 2sec</button>
-                        <button class="btn btn-danger" data-msg-type="danger" data-msg="message danger" data-msg-timer="0">message danger</button>
+                        <button class="btn btn-danger" data-msg-type="danger" data-msg="message danger" >message danger</button>
+                        <button class="btn btn-default" data-msg-type="loader" data-msg="Chargement" >message loader</button>
                     </div>
+                    <hr>
+                    <h2>Utilisation</h2>
+                    <h3>1. Initialisation</h3>
+                    <p>Initialiser le container de appinfo</p>
+<pre><code>$.appinfo.init({
+	id : "appinfo-container" // id du container par default. default : appinfo-container
+});</code></pre>
+<h3>2. Ajouter un message</h3>
+<p>Définition et ajout d'un message</p>
+<pre><code>$.appinfo.add({
+	msg : "mon message",
+	timer : 1000,// default :0
+	type: success// default : default [default, success, danger, loader]
+	showID: true// default : true
+	btClose: true// default : true
+});
+</code></pre>
+                    <h3>3. Personnalisation</h3>
+                    <p>Définissez et personnalisez vos types de message avec le fichier jquery-appinfo.less</p>
+                    <p>Utiliser comme prefix pour la class de votre type <strong>.appinfo-</strong>/le_nom_de_votre_type/ </p>
+       <pre><code>//src jquery-appinfo.less
+.appinfo-msg{
+	&.appinfo-/le_nom_de_votre_type/{
+	/* votre css */
+	}
+}
+</code></pre>
                 </div>
             </div>
         </div>

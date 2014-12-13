@@ -1,13 +1,12 @@
 @bgMsgDefault : #196ca7;
 @bgMsgSuccess : #009e4d;
 @bgMsgDanger : #dc3522;
-
-
+@bgMsgLoader : #000;
 
 @cMsgDefault : #fff;
 @cMsgSuccess : #fff;
 @cMsgDanger : #fff;
-
+@cMsgLoader : #fff;
 
 
 .appinfo-container{
@@ -15,6 +14,7 @@
 	top:0px;
 	right: 0px;
 	text-align: left;
+	z-index: 600;
 
 	& .appinfo-msg{
 		padding: 10px;
@@ -22,24 +22,105 @@
 		color: @cMsgDefault;
 		margin-top: 5px;
 		margin-right: 5px;
+		padding-left: 36px;
 		float: right;
+		min-height: 40px;
+		width: 250px;
 		clear:both;
+		.animate();
+		&:before{
+			content:"\e086";
+			font-family: "Glyphicons Halflings";
+			margin-right: 15px;
+			margin-left: -24px;
+				position: absolute;
+
+		}
+		
+		& .appinfo-id{
+			opacity: 0.5;
+			margin-right: 5px;
+			font-size: 0.8em;
+		}
 		& .bt-close{
 			color: @cMsgDefault;
 			margin-left: 10px;
 			opacity: 0.5;
 			font-weight: bolder;
+			float: right;
 		}
 
-		&.appinfo-success{
+		&.appinfo-type-success{
 			background-color: @bgMsgSuccess;
 			color: @cMsgSuccess;
+			&:before{
+				content:"\e013";
+			}
 		}
-
-		&.appinfo-danger{
+		&.appinfo-type-danger{
 			background-color: @bgMsgDanger;
 			color: @cMsgDanger;
+			&:before{
+				content:"\e083";
+			}
 		}
-
+		&.appinfo-type-loader{
+			background-color: @bgMsgLoader;
+			color: @cMsgLoader;
+			&:before{
+				content:"\e030";
+				.spin();
+			}
+		}
 	}
+
+
+.animate(@time : 125){
+	-webkit-transition: all unit(@time,ms) linear;
+-moz-transition: all unit(@time,ms) linear;
+-ms-transition: all unit(@time,ms) linear;
+-o-transition: all unit(@time,ms) linear;
+transition: all unit(@time,ms) linear;
+}
+
+.spin(){
+
+	-webkit-animation: spin 0.6s infinite linear;
+    -o-animation: spin 0.6s infinite linear;
+    -ms-animation: spin 0.6s infinite linear;
+    -moz-animation: spin 0.6s infinite linear;
+    animation: spin 0.6s infinite linear;
+
+    -webkit-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes spin {
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-ms-keyframes spin {
+    to {
+        -ms-transform: rotate(360deg);
+    }
+}
+@-o-keyframes spin {
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 }

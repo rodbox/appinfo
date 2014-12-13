@@ -14,4 +14,10 @@ $(document).ready(function(){
 		});
 		return false;
 	})
+
+
+	$(document).on("click",".appinfo-type-loader",function (){
+		var t = $(this);
+		$.appInfo.upd(t);
+	})
 });
