@@ -21,14 +21,24 @@ $.appInfo = {
 
             $('body').prepend(infoContainer);
         },
-        add: function (param){
+        add: function (paramSend){
+            var defauts = {
+                timer : 0,
+                type    : "default"
+            }
+
+            var param = $.extend(defauts, paramSend);
+
             this.i++;
             var appinfoID = "appinfo-" + this.i;
+
+            /* Definition de la class en fonction du type de message*/
+            var appinfoClass = "appinfo-"+param.type;
 
             /* Construction du message */
             var infoMsg = $("<div>", {
                 "id": appinfoID,
-                "class": "appinfo-msg "
+                "class": "appinfo-msg " + appinfoClass
             }).html(param.msg)
 
             /* Ajout du bouton de suppression de message*/

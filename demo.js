@@ -6,9 +6,11 @@ $(document).ready(function(){
 		var t = $(this);
 		var msg = t.data("msg");
 		var msgTimer = t.data("msg-timer");
+		var msgType = t.data("msg-type");
 		var msgAdd = $.appInfo.add({
 			'msg':msg,
 			'timer':msgTimer,
+			'type':msgType
 		});
 		return false;
 	})

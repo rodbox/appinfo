@@ -1,6 +1,12 @@
 @bgMsgDefault : #196ca7;
+@bgMsgSuccess : #009e4d;
+@bgMsgDanger : #dc3522;
+
+
 
 @cMsgDefault : #fff;
+@cMsgSuccess : #fff;
+@cMsgDanger : #fff;
 
 
 
@@ -8,6 +14,7 @@
 	position: fixed;
 	top:0px;
 	right: 0px;
+	text-align: left;
 
 	& .appinfo-msg{
 		padding: 10px;
@@ -15,11 +22,24 @@
 		color: @cMsgDefault;
 		margin-top: 5px;
 		margin-right: 5px;
+		float: right;
+		clear:both;
 		& .bt-close{
 			color: @cMsgDefault;
 			margin-left: 10px;
 			opacity: 0.5;
 			font-weight: bolder;
 		}
+
+		&.appinfo-success{
+			background-color: @bgMsgSuccess;
+			color: @cMsgSuccess;
+		}
+
+		&.appinfo-danger{
+			background-color: @bgMsgDanger;
+			color: @cMsgDanger;
+		}
+
 	}
 }

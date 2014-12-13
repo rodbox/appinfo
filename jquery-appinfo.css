@@ -2,6 +2,7 @@
   position: fixed;
   top: 0px;
   right: 0px;
+  text-align: left;
 }
 .appinfo-container .appinfo-msg {
   padding: 10px;
@@ -9,10 +10,20 @@
   color: #ffffff;
   margin-top: 5px;
   margin-right: 5px;
+  float: right;
+  clear: both;
 }
 .appinfo-container .appinfo-msg .bt-close {
   color: #ffffff;
   margin-left: 10px;
   opacity: 0.5;
   font-weight: bolder;
+}
+.appinfo-container .appinfo-msg.appinfo-success {
+  background-color: #009e4d;
+  color: #ffffff;
+}
+.appinfo-container .appinfo-msg.appinfo-danger {
+  background-color: #dc3522;
+  color: #ffffff;
 }
