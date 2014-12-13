@@ -1,0 +1,12 @@
+.appinfo-container {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+.appinfo-container .appinfo-msg {
+  padding: 10px;
+  background-color: #196ca7;
+  color: #ffffff;
+  margin-top: 5px;
+  margin-right: 5px;
+}
