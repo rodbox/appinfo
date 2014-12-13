@@ -10,3 +10,9 @@
   margin-top: 5px;
   margin-right: 5px;
 }
+.appinfo-container .appinfo-msg .bt-close {
+  color: #ffffff;
+  margin-left: 10px;
+  opacity: 0.5;
+  font-weight: bolder;
+}
