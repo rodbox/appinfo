@@ -13,9 +13,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>jquery-appInfo <strong>0.5</strong></h1>
-                    <p></p>
-                    <hr>
-                    <h2>Demo</h2>
+                    </div>
+                    <div class="col-md-6"> <h2>Demo</h2>
                     <div class=" btn-appinfo">
                         <button class="btn btn-primary" data-msg="mon message" >message</button>
                         <button class="btn btn-primary" data-msg="mon message qui ne s'affiche qu'une seconde" data-open="true" data-timer="0"> message timer 1000</button>
@@ -25,14 +24,24 @@
                         <button class="btn btn-default" data-type="default" data-msg="message open + ID" data-open="true" data-showID="true">message open + ID</button>
 <button class="btn btn-default" data-type="star" data-msg="message star" >message star</button>
                         <button class="btn btn-default" data-type="loader" data-msg="Chargement" >message loader</button>
-                    </div>
-                    <div>
+</div>
+                         <div>
                     <hr>  
                         <button class="btn btn-default toggle-loader-demo" data-to="success" data-msgMeta="" data-timer="500"> loader > success</button>
                         <button class="btn btn-default toggle-loader-demo" data-to="danger" data-msgMeta ="Il y a eu un problème a la ligne X">loader > danger + message meta</button>
                         <button class="btn btn-danger" id="all-delete">delete all</button>
                     </div>
-                    <hr>
+                    </div>
+                    
+                    
+                    <div class="col-md-6" id="source">
+                        <h3>Source</h3>
+                        <pre><code id="source-param">
+                            
+                        </code></pre>
+                    </div>
+
+                    <div class="col-md-12">
                     <h2>Utilisation</h2>
                     <h3>1. Initialisation</h3>
                     <p>Initialiser le container de appinfo</p>
