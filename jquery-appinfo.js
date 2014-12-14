@@ -24,10 +24,11 @@ $.appInfo = {
         add: function (paramSend){
             var defauts = {
                 timer   : 0,
-                open    : true,
+                open    : false,
                 showID  : false,
                 type    : "default",
-                msgMeta : "",
+                msgmeta : "",
+                showmsgmeta : true,
                 btClose : true
             }
 
@@ -49,13 +50,27 @@ $.appInfo = {
             });
 
             /* contruction du message */
-            var msg = $('<p>',{"class":"appinfo-content"}).html(param.msg);
+            var msg = $('<p>',{"href":"#","class":"appinfo-content"}).html(param.msg);
             infoMsg.html(msg);
 
             /* contruction du meta message */
-            if (param.msgMeta != ""){
-                var msgMeta = $('<p>',{"class":"appinfo-content-meta"}).html(param.msgMeta);
+            if (param.msgmeta != ""){
+                var msgMetaLink = $('<a>',{"href":"#","class":"appinfo-content-meta-toggle"})
+                    .html("plus d'infos")
+                    .click(function (){
+                        var t = $(this).toggleClass("toggle-open").next(".appinfo-content-meta").slideToggle(150);
+                        return false;
+                    });
+
+                var msgMeta = $('<div>',{"class":"appinfo-content-meta"}).html(param.msgmeta);
                 infoMsg.addClass('appinfo-content-active');
+                /* Afficher automatiquement msgMeta enc fonction du parmatres showmsgmeta */
+                if (param.showmsgmeta){
+                    msgMeta.show();
+                    msgMetaLink.addClass("toggle-open");
+                }
+
+                infoMsg.append(msgMetaLink);
                 infoMsg.append(msgMeta);
             }
 
@@ -82,7 +97,7 @@ $.appInfo = {
             }
 
             /* Ajout du message dans le container de messages */
-            $('#'+this.infoContainerID).prepend(infoMsg);
+            $('#'+this.infoContainerID).append(infoMsg);
 
             return infoMsg;
         },
@@ -93,12 +108,13 @@ $.appInfo = {
         },
         upd: function(t,paramSend) {
             var defauts = {
-                open    : true,
-                from    : "loader",
-                to      : "success",
-                msg     : "Opération validé",
-                msgMeta     : "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-                timer   : 5000
+                open        : true,
+                from        : "loader",
+                to          : "success",
+                msg         : "Opération validé",
+                msgmeta     : "<ul><li>Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.</p></li><li><p>Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna.</p></li></ul>",
+                showmsgmeta : true,
+                timer       : 0
             }
 
             var param = $.extend(defauts, paramSend);
@@ -114,10 +130,23 @@ $.appInfo = {
 
 
            
-            if (param.msgMeta != ""){
-                var msgMeta = $('<p>',{"class":"appinfo-content-meta"}).html(param.msgMeta);
+            if (param.msgmeta != ""){
+                var msgMetaLink = $('<a>',{"href":"#","class":"appinfo-content-meta-toggle"})
+                    .html("plus d'infos")
+                    .click(function (){
+                        var t = $(this).toggleClass("toggle-open").next(".appinfo-content-meta").slideToggle(150);
+                        return false;
+                    });
+                var msgMeta = $('<div>',{"class":"appinfo-content-meta"}).html(param.msgmeta);
+                if (param.showmsgmeta){
+                    msgMeta.show();
+                    msgMetaLink.addClass("toggle-open");
+                }
+
+                t.append(msgMetaLink);
                 t.append(msgMeta);
                 t.addClass('appinfo-content-active');
+
             }
 
             /* fonction timer du message */
