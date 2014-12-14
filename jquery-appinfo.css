@@ -1,21 +1,26 @@
 .appinfo-container {
   position: fixed;
-  top: 0px;
-  right: 0px;
+  top: 5px;
+  right: 5px;
   text-align: left;
   z-index: 600;
+  overflow: hidden;
 }
 .appinfo-container .appinfo-msg {
   padding: 10px;
   background-color: #196ca7;
   color: #ffffff;
-  margin-top: 5px;
-  margin-right: 5px;
+  margin-bottom: 5px;
   padding-left: 36px;
   float: right;
-  min-height: 40px;
   width: 250px;
+  min-height: 40px;
   clear: both;
+  -moz-transform: translateX(204px);
+  -webkit-transform: translateX(204px);
+  -o-transform: translateX(204px);
+  -ms-transform: translateX(204px);
+  transform: translateX(204px);
   -webkit-transition: all 125ms linear;
   -moz-transition: all 125ms linear;
   -ms-transition: all 125ms linear;
@@ -25,11 +30,23 @@
 .appinfo-container .appinfo-msg:before {
   content: "\e086";
   font-family: "Glyphicons Halflings";
-  margin-right: 15px;
-  margin-left: -24px;
+  margin-left: -20px;
   position: absolute;
 }
+.appinfo-container .appinfo-msg p.appinfo-content {
+  display: inline;
+}
+.appinfo-container .appinfo-msg p.appinfo-content.appinfo-content-active:after {
+  content: " >";
+  float: right;
+}
+.appinfo-container .appinfo-msg .appinfo-content-meta {
+  opacity: 0.5;
+  padding: 5px;
+  margin: 0px;
+}
 .appinfo-container .appinfo-msg .appinfo-id {
+  margin-left: 10px;
   opacity: 0.5;
   margin-right: 5px;
   font-size: 0.8em;
@@ -37,9 +54,21 @@
 .appinfo-container .appinfo-msg .bt-close {
   color: #ffffff;
   margin-left: 10px;
-  opacity: 0.5;
+  display: none;
   font-weight: bolder;
   float: right;
+  opacity: 0.5;
+}
+.appinfo-container .appinfo-msg:hover .bt-close {
+  display: block;
+}
+.appinfo-container .appinfo-msg.appinfo-open,
+.appinfo-container .appinfo-msg:hover {
+  -moz-transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+  -o-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
 }
 .appinfo-container .appinfo-msg.appinfo-type-success {
   background-color: #009e4d;

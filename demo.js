@@ -20,4 +20,14 @@ $(document).ready(function(){
 		var t = $(this);
 		$.appInfo.upd(t);
 	})
+
+	$(document).on("click","#toggle-loader-demo",function (){
+		var t = $(".appinfo-type-loader");
+		$.appInfo.upd(t);
+	})
+
+	$(document).on("click","#all-delete",function (){
+		var t = $(".appinfo-msg");
+		$.appInfo.del(t);
+	})
 });

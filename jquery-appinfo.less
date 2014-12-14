@@ -11,44 +11,72 @@
 
 .appinfo-container{
 	position: fixed;
-	top:0px;
-	right: 0px;
+	top:5px;
+	right: 5px;
 	text-align: left;
 	z-index: 600;
+	overflow: hidden;
 
 	& .appinfo-msg{
 		padding: 10px;
 		background-color: @bgMsgDefault;
 		color: @cMsgDefault;
-		margin-top: 5px;
-		margin-right: 5px;
+		margin-bottom: 5px;
+
 		padding-left: 36px;
 		float: right;
-		min-height: 40px;
 		width: 250px;
+		min-height: 40px;
 		clear:both;
+		
+		.translateX(204);
 		.animate();
 		&:before{
 			content:"\e086";
 			font-family: "Glyphicons Halflings";
-			margin-right: 15px;
-			margin-left: -24px;
+			
+			margin-left: -20px;
 				position: absolute;
-
 		}
-		
+		& p.appinfo-content {
+			display: inline;
+			&.appinfo-content-active:after{ content:" >"; float: right;}
+		}
+		& .appinfo-content-meta{
+			opacity: 0.5;
+			padding: 5px;
+			margin:0px; 
+		}
 		& .appinfo-id{
+			margin-left: 10px;
 			opacity: 0.5;
 			margin-right: 5px;
 			font-size: 0.8em;
 		}
+
 		& .bt-close{
 			color: @cMsgDefault;
 			margin-left: 10px;
-			opacity: 0.5;
+			display: none;
 			font-weight: bolder;
-			float: right;
+			float: right;opacity: 0.5;
 		}
+
+		&:hover {
+			
+			.bt-close{
+				display: block;
+			}
+		}
+		&.appinfo-open,
+		&:hover {
+			.translateX(0);
+			
+		}
+
+
+
+
 
 		&.appinfo-type-success{
 			background-color: @bgMsgSuccess;
@@ -122,5 +150,13 @@ transition: all unit(@time,ms) linear;
     to {
         transform: rotate(360deg);
     }
+}
+
+.translateX(@value:200){
+	-moz-transform: translateX(unit(@value,px));
+	-webkit-transform: translateX(unit(@value,px));
+	-o-transform: translateX(unit(@value,px));
+	-ms-transform: translateX(unit(@value,px));
+	transform: translateX(unit(@value,px));
 }
 }

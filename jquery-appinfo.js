@@ -23,12 +23,13 @@ $.appInfo = {
         },
         add: function (paramSend){
             var defauts = {
-                timer : 0,
-                timer : 0,
-                showID    : true,
-                btClose    : true
+                timer   : 0,
+                open    : true,
+                showID  : false,
+                type    : "default",
+                msgMeta : "",
+                btClose : true
             }
-
 
             var param = $.extend(defauts, paramSend);
 
@@ -38,11 +39,25 @@ $.appInfo = {
             /* Definition de la class en fonction du type de message*/
             var appinfoClass = "appinfo-type-"+param.type;
 
-            /* Construction du message */
+            /* Definition de la class open message*/
+            var appinfoOpenClass = (param.open)?"appinfo-open":"";
+
+            /* Construction container du message */
             var infoMsg = $("<div>", {
                 "id": appinfoID,
-                "class": "appinfo-msg " + appinfoClass
-            }).html(param.msg)
+                "class": "appinfo-msg " + appinfoClass + " " + appinfoOpenClass
+            });
+
+            /* contruction du message */
+            var msg = $('<p>',{"class":"appinfo-content"}).html(param.msg);
+            infoMsg.html(msg);
+
+            /* contruction du meta message */
+            if (param.msgMeta != ""){
+                var msgMeta = $('<p>',{"class":"appinfo-content-meta"}).html(param.msgMeta);
+                infoMsg.addClass('appinfo-content-active');
+                infoMsg.append(msgMeta);
+            }
 
             /* Ajout du bouton de suppression de message*/
             if (param.btClose){
@@ -50,7 +65,7 @@ $.appInfo = {
                     $.appInfo.del(infoMsg);
                     return false;
                 })
-                infoMsg.append(infoMsgBtClose);
+                infoMsg.prepend(infoMsgBtClose);
             }
 
             /* Ajout de l'id */
@@ -62,8 +77,7 @@ $.appInfo = {
             /* fonction timer du message */
             if (param.timer != false && param.timer > 0){
                 setTimeout(function (){
-                    console.log($.appInfo.del(infoMsg));
- 
+                    $.appInfo.del(infoMsg);
                 },param.timer)
             }
 
@@ -79,19 +93,37 @@ $.appInfo = {
         },
         upd: function(t,paramSend) {
             var defauts = {
-                from : "loader",
-                to : "success",
-                timer : 5000
+                open    : true,
+                from    : "loader",
+                to      : "success",
+                msg     : "Opération validé",
+                msgMeta     : "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+                timer   : 5000
             }
 
             var param = $.extend(defauts, paramSend);
             t.removeClass("appinfo-type-"+param.from);
             t.addClass("appinfo-type-"+param.to);
 
+            /* Mis a jour du message */
+            t.find(".appinfo-content").html(param.msg);
+
+            /* Definition de la class open message*/
+            var appinfoOpenClass = (param.open)?"appinfo-open":"";
+            t.addClass(appinfoOpenClass);
+
+
+           
+            if (param.msgMeta != ""){
+                var msgMeta = $('<p>',{"class":"appinfo-content-meta"}).html(param.msgMeta);
+                t.append(msgMeta);
+                t.addClass('appinfo-content-active');
+            }
+
             /* fonction timer du message */
             if (param.timer != false && param.timer > 0){
                 setTimeout(function (){
-                    console.log($.appInfo.del(t));
+                    $.appInfo.del(t);
  
                 },param.timer)
             }
